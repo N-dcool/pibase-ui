@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
     //     return Response.json({
     //         rows: result.rows,
     //         fields: result.fields.map((f: FieldDef) => f.name),
-    //         rowCounts: result.rowCount ?? 0
+    //         rowCount: result.rowCount ?? 0
     //      });
     // } catch (err: unknown) {
     //     const msg = err instanceof Error ? err.message : "Query failed";

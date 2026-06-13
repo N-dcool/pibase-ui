@@ -7,7 +7,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 export interface QueryResult {
   rows: Record<string, unknown>[];
   fields: string[];
-  rowCounts: number;
+  rowCount: number;
   ms: number;
 }
 

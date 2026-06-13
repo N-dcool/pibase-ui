@@ -28,7 +28,7 @@ export function ResultsTable({ result, error }: Readonly<ResultsTableProps>) {
   if(!result.rows || result.rows.length === 0) {
     return (
         <div className="text-sm text-gray-500">
-            Query OK ・ {result.rowCounts} row{result.rowCounts === 1 ? "" : "s"} affected ・{result.ms}ms
+            Query OK ・ {result.rowCount} row{result.rowCount === 1 ? "" : "s"} affected ・{result.ms}ms
         </div>
     );
   }
