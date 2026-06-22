@@ -49,6 +49,7 @@ export function Navbar() {
                         <>
                             {navLink('/dashboard', 'Dashboard')}
                             {navLink('/playground', 'Playground')}
+                            {navLink('/about', 'About')}
                             <div className="w-px h-5 bg-gray-800 mx-1.5" />
                             <button
                                 onClick={handleLogout}
@@ -59,6 +60,7 @@ export function Navbar() {
                         </>
                     ) : (
                         <>
+                            {navLink('/about', 'About')}
                             {navLink('/login', 'Login')}
                             <Link
                                 href="/register"

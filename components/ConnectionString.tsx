@@ -4,9 +4,10 @@ import { useState } from "react";
 
 interface Props {
   value: string;
+  label?: string
 }
 
-export function ConnectionString({ value }: Readonly<Props>) {
+export function ConnectionString({ value, label }: Readonly<Props>) {
   const [copied, setCopied] = useState(false);
 
   const copy = async () => {
@@ -21,7 +22,7 @@ export function ConnectionString({ value }: Readonly<Props>) {
     <div className="bg-gray-950 border-gray-700/60 rounded-lg p-4">
       <div className="flex items-center justify-between mb-2">
         <p className="text-xs text-gray-500 uppercase tracking-widest font-medium">
-          Connection String
+          {label || 'Connection String'}
         </p>
         <button
           onClick={copy}

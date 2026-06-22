@@ -61,11 +61,13 @@ export function DbCard({
           </div>
           <div>
             <p className="text-gray-500 text-xs mb-1">Host</p>
-            <p className="font-mono text-white truncate">localhost</p>
+            <p className="font-mono text-white truncate">
+              {db.sniHostname ? `${db.sniHostname}.db.nareshchoudhary.com` : 'localhost'}
+            </p>
           </div>
           <div>
             <p className="text-gray-500 text-xs mb-1">Port</p>
-            <p className="font-mono text-white">{db.hostPort}</p>
+            <p className="font-mono text-white">{db.sniHostname ? '5432' : db.hostPort}</p>
           </div>
           <div className="col-span-2">
             <p className="text-gray-500 text-xs mb-1">Created</p>
@@ -73,8 +75,11 @@ export function DbCard({
           </div>
         </div>
         {/* Connection string */}
-        {isRunning && db.directUri ? (
-          <ConnectionString value={db.directUri} />
+        {isRunning && (db.sniUri || db.directUri) ? (
+          <div className="space-y-3">
+            {db.sniUri && (<ConnectionString value={db.sniUri} label="SNI URI ・ domain-based"/>)}
+            {db.directUri && (<ConnectionString value={db.directUri} label="Direct URI ・ port-based"/>)}
+          </div>
           ) : (
                 <div className="bg-gray-950 border border-gray-700/60 rounded-lg p-4">
                   <p className="text-sm text-gray-500">Connection string will appear once the database is running.</p>

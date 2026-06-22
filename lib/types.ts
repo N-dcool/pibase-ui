@@ -7,6 +7,8 @@ export interface DbRecord {
   dbUser: string;
   hostPort: number;
   directUri: string | null;
+  sniUri: string | null;
+  sniHostname: string | null;
   pooledUri: string | null;
   memoryLimitMb: number;
   storageLimitMb: number;

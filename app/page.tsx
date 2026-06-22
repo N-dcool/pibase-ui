@@ -31,9 +31,12 @@ const terminalSteps = [
   },
   {
     type: "cmd-cont",
-    text: '        -d \'{"email":"you@example.com","password":"..."}\'',
+    text: ' -d \'{"email":"you@example.com","password":"..."}\'',
   },
-  { type: "out", text: '→ {"accessToken":"eyJhbGciOiJIUzI1NiJ9..."}' },
+  {
+    type: "out",
+    text: '-> {"accessToken":"eyJhbGciOiJIUzI1NiJ9...","user":{...}}',
+  },
   { type: "gap", text: "" },
   { type: "comment", text: "# 2. Create a PostgreSQL database" },
   {
@@ -42,17 +45,31 @@ const terminalSteps = [
   },
   {
     type: "cmd-cont",
-    text: '        -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9..."',
+    text: ' -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9..."',
   },
   {
     type: "out",
-    text: '→ {"id":"abcde", "status":"PROVISIONING" ,"directUri":"postgresql://..."}',
+    text: '-> {"id":"xyz","status":"PROVISIONING","sniUri":null}',
   },
   { type: "gap", text: "" },
-  { type: "comment", text: "# 3. Connect with psql" },
+  {
+    type: "comment",
+    text: "# 3. Check status (once RUNNING, URIs are populated)",
+  },
   {
     type: "cmd",
-    text: '$ psql "postgresql://dbuser:abc@db.nareshchoudhary.com:5433/db_xyz"',
+    text: '$ curl https://db.nareshchoudhary.com/api/db/status -H "Authorization: Bearer ..."',
+  },
+  { type: "out", text: '-> {"id":"xyz","status":"RUNNING",' },
+  {
+    type: "out",
+    text: ' "sniUri":"postgresql://dbuser:...@db-xyz.db.nareshchoudhary.com:5432/db_xyz?sslmode=require"}',
+  },
+  { type: "gap", text: "" },
+  { type: "comment", text: "# 4. Connect via SNI hostname (single port, TLS)" },
+  {
+    type: "cmd",
+    text: '$ psql "postgresql://dbuser:abc@db-xyz.db.nareshchoudhary.com:5432/db_xyz?sslmode=require"',
   },
   { type: "out", text: "db_xyz=# |" },
 ];

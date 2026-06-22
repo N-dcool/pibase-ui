@@ -7,17 +7,12 @@ interface WipItem {
 
 const WIP_ITEMS: WipItem[] = [
   {
-    title: "Direct JDBC/connection string access",
-    description:
-      "Database URI is shown but external connections are not routed yet",
-  },
-  {
     title: "Backup & Restore",
-    description: "Create and restore database snapshots",
+    description: "Create and restore database snapshots before TTL expiry",
   },
   {
     title: "Query History",
-    description: "Save and replay previous SQL queries",
+    description: "Save and replay previous SQL queries in the playground",
   },
   {
     title: "MySQL Support",
