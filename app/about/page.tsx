@@ -109,7 +109,7 @@ export default function AboutPage() {
             Try it out
           </Link>
           <a
-            href="https://github.com/nareshchoudhary"
+            href="https://github.com/N-dcool/pibase-service"
             target="_blank"
             rel="noopener noreferrer"
             className="ml-2 border border-gray-700 hover:border-gray-500 text-gray-300 hover:text-white px-5 py-2 rounded-lg text-sm font-medium transition-colors"
